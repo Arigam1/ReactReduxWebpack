@@ -1,13 +1,18 @@
 import React from 'react';
-import { Route } from 'react-router';
+import { Redirect, Route, Switch } from 'react-router';
 import "./app.less"
+import Card from './card/Card';
 import Main from './main/Main';
 
 const App = () => {
 
     return (
         <div className="container">
-            <Route path="/" component={Main} />
+            <Switch>
+                <Route exact path="/" component={Main} />
+                <Route path="/card/:username/:reponame" component={Card} />
+                <Redirect to="/" />
+            </Switch>
         </div>
     );
 };
